@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins="http://localhost:3000")
 public class MainController {
     @Autowired
     private MyUserDetailsService userDetailsService;
@@ -20,10 +21,6 @@ public class MainController {
     @Autowired
     private JwtUtility jwtUtility;
 
-    @GetMapping("/hello")
-    public String home(){
-        return "Hello World";
-    }
     @PostMapping("/token")
     public JwtResponse generateToken(@RequestBody JwtRequest jwtRequest) throws Exception {
         try{
